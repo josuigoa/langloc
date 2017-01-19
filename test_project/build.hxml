@@ -1,0 +1,5 @@
+-lib langloc
+-main Main
+-js main.js
+-D print_localizable_ids
+# -D locales_path=../locales
