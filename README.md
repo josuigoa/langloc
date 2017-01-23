@@ -38,12 +38,12 @@ Loc.init();
 The localization `id`s are automatically created as static fields of the `langloc.Loc` class. So use them!
 ```haxe
 Loc.set_language(Lang.eu_ES); //set language to Basque
-trace( Loc.test2 ); //bigarrena
-trace( Loc.test3 ); //hirugarrena
+trace( Loc.test1 ); //bigarrena
+trace( Loc.test2 ); //hirugarrena
 
 Loc.set_language(Lang.en_UK); //set language to English
-trace( Loc.test2 ); //second
-trace( Loc.test3 ); //localizable_3, it is not translated to en_UK
+trace( Loc.test1 ); //second
+trace( Loc.test2 ); //localizable_3, it is not translated to en_UK
 ```
 
 #How it works
