@@ -3,9 +3,9 @@
     "url" : "https://github.com/josuigoa/langloc/",
     "license": "MIT",
     "tags": ["cross", "localization", "translation", "language"],
-    "description": "Macro based localization manager for Haxe.",
-    "version": "1.0.0",
-    "releasenote": "",
+    "description": "Macro based strictly typed localization manager for Haxe.",
+    "version": "1.1.0",
+    "releasenote": "added non-strict translation getter",
     "contributors": ["josuigoa"],
     "dependencies": {}
 }

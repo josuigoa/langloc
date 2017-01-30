@@ -63,6 +63,9 @@ class Macros {
         
         init_exprs.push(macro langloc.Loc.localizations = new Map());
         init_exprs.push(macro var lang_map);
+            #if langloc_dynamic
+            init_exprs.push(macro langloc.Loc.localization_indices_map = new Map());
+            #end
         #end
         languages = [];
         
@@ -83,6 +86,7 @@ class Macros {
             // read the strings.csv file and split the lines
             csv_lines = line_break_ereg.split(sys.io.File.getContent(locales_path+l_name+'/strings.csv'));
             for (l in csv_lines) {
+                if (StringTools.startsWith(l, '//')) continue;
                 // every line has "id,translation" format
                 pair = id_text_sep_ereg.split(l);
                 loc_id = pair[0];
@@ -98,6 +102,9 @@ class Macros {
                                 pos : Context.currentPos()
                             };
                     created_fields.set(loc_id, fields.push(expr)-1);
+                    #if (!display && langloc_dynamic)
+                    init_exprs.push(macro localization_indices_map.set($v{loc_text}, $v{localizable_ind}));
+                    #end
                 } else {
                     // if there was an existing field for this localizable_id
                     // add the current translation to the documentation of that field

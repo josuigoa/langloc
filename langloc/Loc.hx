@@ -9,7 +9,7 @@ class Loc {
     
     static public function set_language(_new_lang:Lang) current_language = _new_lang;
     
-    @:noCompletion static public function get_localized_text(l:LocalizableID) : String {
+    @:noCompletion static public function get_localized(l:LocalizableID) : String {
         var localized_text = '';
         if (Loc.localizations != null) {
             var lang_map = Loc.localizations.get(Loc.current_language);
@@ -48,6 +48,13 @@ class Loc {
     }
     */
     
+    // #if langloc_dynamic
+    static var localization_indices_map:Map<String, Int>;
+    static public function get_dynamic_localized(s:String) 
+        return (localization_indices_map.exists(s)) 
+                    ? get_localized(localization_indices_map.get(s))
+                    : s;
+    // #end
 }
 
 @:build(langloc.Macros.build_langs())
@@ -64,6 +71,6 @@ abstract LocalizableID(Int) from Int to Int {
     public inline function new( v : Int ) this = v;
     
     @:to public inline function toString() {
-        return Loc.get_localized_text(this);
+        return Loc.get_localized(this);
     }
 }

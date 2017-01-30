@@ -12,13 +12,16 @@ class Main {
         trace( Loc.test1 ); //localizable_1
         
         Loc.set_language(Lang.eu_ES);
-        trace(Loc.test1); //bigarrena
+        trace( 'strict: ' + Loc.test1 ); //bigarrena
+        trace( 'dynamic: ' + Loc.get_dynamic_localized('test1') ); //bigarrena
         
         Loc.set_language(Lang.en_UK);
-        trace( Loc.test1 ); //second
+        trace( 'strict: ' + Loc.test1 ); //second
+        trace( 'dynamic: ' + Loc.get_dynamic_localized('test1') ); //second
         
         Loc.set_language(Lang.es_ES);
-        trace( Loc.test1 ); //segundo
+        trace( 'strict: ' + Loc.test1 ); //segundo
+        trace( 'dynamic: ' + Loc.get_dynamic_localized('test1') ); //segundo
     }
     
     static function main() {

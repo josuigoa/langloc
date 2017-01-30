@@ -2,4 +2,5 @@
 -main Main
 -js main.js
 -D print_localizable_ids
-# -D locales_path=../locales
+# -D locales_path=custom_locales_path
+-D langloc_dynamic

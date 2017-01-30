@@ -1,5 +1,5 @@
 #langloc
-Macro based localization manager for Haxe. 
+Macro based strictly typed localization manager for Haxe.
 
 ##Install
 > haxelib install langloc
@@ -38,12 +38,18 @@ Loc.init();
 The localization `id`s are automatically created as static fields of the `langloc.Loc` class. So use them!
 ```haxe
 Loc.set_language(Lang.eu_ES); //set language to Basque
-trace( Loc.test2 ); //bigarrena
-trace( Loc.test3 ); //hirugarrena
+trace( Loc.test1 ); //bigarrena
+trace( Loc.test2 ); //hirugarrena
 
 Loc.set_language(Lang.en_UK); //set language to English
-trace( Loc.test2 ); //second
-trace( Loc.test3 ); //localizable_3, it is not translated to en_UK
+trace( Loc.test1 ); //second
+trace( Loc.test2 ); //localizable_3, it is not translated to en_UK
+```
+
+##Dynamic usage
+Defining the `langloc_dynamic` flag, you will be able to load the localizations in a dynamic way like this:
+```haxe
+Loc.get_dynamic_localized('test1') //second
 ```
 
 #How it works
@@ -88,4 +94,4 @@ In the end of the compilation, langloc will warn you if there is some missing tr
 
 If you define the `print_localizable_ids` compilation flag, it will create a file called `localizable_ids` in the translations root directory. That file will store the LocalizableID and the name attached to it.
 
-If you want to the complete example, go to test_project
+If you want a complete example, go to `test_project` folder
